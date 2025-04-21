@@ -1,57 +1,79 @@
----
-name: Open Graph Image Generation
-slug: og-image-generation
-description: Compute and generate dynamic social card images with React components.
-framework: Next.js
-useCase: Edge Functions
-css: Tailwind
-deployUrl: https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/edge-functions/vercel-og-nextjs&project-name=vercel-og-nextjs&repository-name=vercel-og-nextjs
-demoUrl: https://og-examples.vercel.sh/api/static
-relatedTemplates:
-  - nextjs-boilerplate
-  - aws-s3-image-upload-nextjs
-  - platforms-starter-kit
-  - blog-starter-kit
----
+# NFD OG Image Generator
 
-# Vercel OG + Next.js
+This service generates dynamic Open Graph images for NFDomains. It provides an API endpoint that returns customized OG images for NFD profiles to be displayed when NFD profile links are shared on social media platforms.
 
-This example shows how to use [Vercel OG](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation) with Next.js.
+## Features
 
-## Demo
+- Dynamic image generation based on NFD profile data
+- Displays NFD avatar and banner images
+- Fallback support for webp images (not supported by @vercel/og)
+- Supports both MainNet and TestNet NFDs
+- Default image when no name parameter is provided
+- Clean, modern design with NFD branding
 
-- [Static Text](https://og-examples.vercel.sh/api/static)
-- [Vercel Card](https://og-examples.vercel.sh/api/vercel)
-- [Dynamic Text from URL Query](https://og-examples.vercel.sh/api/param)
-- [Embed SVG Image](https://og-examples.vercel.sh/api/image-svg)
-- [Dynamic PNG Image Based on URL Queries](https://og-examples.vercel.sh/api/dynamic-image?username=vercel)
-- [Custom Font](https://og-examples.vercel.sh/api/custom-font)
-- [Emoji](https://og-examples.vercel.sh/api/emoji)
-- [Languages](https://og-examples.vercel.sh/api/language)
-- [Encrypted Token](https://og-examples.vercel.sh/encrypted/a)
+## API Usage
 
-## How to Use
+### Endpoint
 
-You can choose from one of the following two methods to use this repository:
-
-### One-Click Deploy
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/edge-functions/vercel-og-nextjs&project-name=vercel-og-nextjs&repository-name=vercel-og-nextjs)
-
-### Clone and Deploy
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [pnpm](https://pnpm.io/installation) to bootstrap the example:
-
-```bash
-pnpm create next-app --example https://github.com/vercel/examples/tree/main/edge-functions/vercel-og-nextjs
+```
+GET /api/og?name={nfd_name}&network={network}
 ```
 
-Next, run Next.js in development mode:
+### Parameters
+
+- `name` (required): The NFD name, including TLD (e.g., `alice.algo`)
+- `network` (optional): Network to resolve the NFD from - `mainnet` (default) or `testnet`
+
+### Examples
+
+```
+# MainNet NFD (default)
+https://og.nfd.domains/api/og?name=alice.algo
+
+# TestNet NFD
+https://og.nfd.domains/api/og?name=alice.algo&network=testnet
+
+# Default image (when no name is provided)
+https://og.nfd.domains/api/og
+```
+
+## How It Works
+
+1. The service resolves the NFD using the provided name and network
+2. It fetches the avatar and banner from the NFD properties (verified or user-defined)
+3. For webp images (unsupported by @vercel/og), it uses fallback JPEG images
+4. When no name is provided, it returns a default image
+
+## Development
+
+This project is built with:
+
+- Next.js (with Edge runtime)
+- @vercel/og for image generation
+- @txnlab/nfd-sdk for resolving NFD data
+- Satori for rendering React components to SVG
+
+### Running Locally
 
 ```bash
+# Install dependencies
+pnpm install
+
+# Run the development server
 pnpm dev
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=edge-middleware-eap) ([Documentation](https://nextjs.org/docs/deployment)).
+Open [http://localhost:3000/api/og?name=alice.algo](http://localhost:3000/api/og?name=alice.algo) to see the generated image.
+
+### Deployment
+
+This project is designed to be deployed on Vercel. It uses Edge Functions for optimal performance and global distribution.
+
+```bash
+# Deploy to Vercel
+vercel
+```
+
+## License
+
+MIT
