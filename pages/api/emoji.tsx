@@ -30,6 +30,6 @@ export default async function handler() {
       // Supported options: 'twemoji', 'blobmoji', 'noto', 'openmoji', 'fluent', 'fluentFlat'
       // Default to 'twemoji'
       emoji: 'twemoji',
-    }
+    },
   )
 }

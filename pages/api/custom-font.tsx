@@ -5,7 +5,7 @@ export const config = {
 }
 
 const font = fetch(new URL('../../assets/TYPEWR__.TTF', import.meta.url)).then(
-  (res) => res.arrayBuffer()
+  (res) => res.arrayBuffer(),
 )
 
 export default async function handler() {
@@ -37,6 +37,6 @@ export default async function handler() {
           style: 'normal',
         },
       ],
-    }
+    },
   )
 }

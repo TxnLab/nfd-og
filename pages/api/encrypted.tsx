@@ -14,7 +14,7 @@ const key = crypto.subtle.importKey(
   new TextEncoder().encode('my_secret'),
   { name: 'HMAC', hash: { name: 'SHA-256' } },
   false,
-  ['sign']
+  ['sign'],
 )
 
 function toHex(arrayBuffer) {
@@ -33,8 +33,8 @@ export default async function handler(req: NextRequest) {
     await crypto.subtle.sign(
       'HMAC',
       await key,
-      new TextEncoder().encode(JSON.stringify({ id }))
-    )
+      new TextEncoder().encode(JSON.stringify({ id })),
+    ),
   )
 
   if (token !== verifyToken) {
@@ -63,6 +63,6 @@ export default async function handler(req: NextRequest) {
     {
       width: 1200,
       height: 630,
-    }
+    },
   )
 }

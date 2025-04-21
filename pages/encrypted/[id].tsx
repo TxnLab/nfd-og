@@ -33,7 +33,11 @@ export default function Page({ id, token }) {
     <div>
       <h1>Encrypted Open Graph Image.</h1>
       <p>Only /a, /b, /c with correct tokens are accessible:</p>
-      <a href={`/api/encrypted?id=${id}&token=${token}`} target="_blank" rel="noreferrer">
+      <a
+        href={`/api/encrypted?id=${id}&token=${token}`}
+        target="_blank"
+        rel="noreferrer"
+      >
         <code>
           /api/encrypted?id={id}&token={token}
         </code>

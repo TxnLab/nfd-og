@@ -68,7 +68,7 @@ export default function handler(req: NextRequest) {
       {
         width: 1200,
         height: 630,
-      }
+      },
     )
   } catch (e: any) {
     console.log(`${e.message}`)

@@ -45,6 +45,6 @@ export default async function handler() {
     {
       width: 1200,
       height: 600,
-    }
+    },
   )
 }
