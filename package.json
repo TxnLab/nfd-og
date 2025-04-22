@@ -3,6 +3,7 @@
   "repository": "https://github.com/vercel/examples.git",
   "license": "MIT",
   "private": true,
+  "packageManager": "pnpm@9.15.6",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -27,7 +28,7 @@
     "eslint-config-prettier": "10.1.2",
     "eslint-plugin-import-x": "4.10.6",
     "prettier": "3.5.3",
-    "turbo": "1.8.5",
+    "turbo": "2.5.0",
     "typescript": "5.8.3"
   }
 }
