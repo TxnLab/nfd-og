@@ -113,13 +113,13 @@ const Home: NextPage = () => {
             <li>Dynamic image generation based on NFD profile data</li>
             <li>Support for both MainNet and TestNet NFDs</li>
             <li>
-              Fallback support for webp images (not supported by{' '}
+              Fallback support for webp images (not supported, see{' '}
               <a
-                href="https://github.com/vercel/og"
+                href="https://github.com/vercel/satori/pull/622"
                 target="_blank"
                 rel="noreferrer"
               >
-                <code>@vercel/og</code>
+                vercel/satori#622
               </a>
               )
             </li>

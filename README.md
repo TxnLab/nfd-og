@@ -6,7 +6,7 @@ This service generates dynamic Open Graph images for NFDomains. It provides an A
 
 - Dynamic image generation based on NFD profile data
 - Displays NFD avatar and banner images
-- Fallback support for webp images (not supported by @vercel/og)
+- Fallback support for webp images (not supported by Satori)
 - Supports both MainNet and TestNet NFDs
 - Default image when no name parameter is provided
 - Clean, modern design with NFD branding
@@ -28,20 +28,20 @@ GET /api/og?name={nfd_name}&network={network}
 
 ```
 # MainNet NFD (default)
-https://og.nfd.domains/api/og?name=alice.algo
+https://nfd-og.vercel.app/api/og?name=nfdomains.algo
 
 # TestNet NFD
-https://og.nfd.domains/api/og?name=alice.algo&network=testnet
+https://nfd-og.vercel.app/api/og?name=nfdomains.algo&network=testnet
 
 # Default image (when no name is provided)
-https://og.nfd.domains/api/og
+https://nfd-og.vercel.app/api/og
 ```
 
 ## How It Works
 
 1. The service resolves the NFD using the provided name and network
 2. It fetches the avatar and banner from the NFD properties (verified or user-defined)
-3. For webp images (unsupported by @vercel/og), it uses fallback JPEG images
+3. For webp images (unsupported by Satori), it uses fallback JPEG images
 4. When no name is provided, it returns a default image
 
 ## Development
@@ -49,9 +49,9 @@ https://og.nfd.domains/api/og
 This project is built with:
 
 - Next.js (with Edge runtime)
-- @vercel/og for image generation
-- @txnlab/nfd-sdk for resolving NFD data
-- Satori for rendering React components to SVG
+- [`@vercel/og`](https://vercel.com/docs/og-image-generation) for image generation
+- [`@txnlab/nfd-sdk`](https://github.com/txnlab/nfd-sdk) for resolving NFD data
+- [Satori](https://github.com/vercel/satori) for rendering React components to SVG
 
 ### Running Locally
 
