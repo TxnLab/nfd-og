@@ -1,5 +1,7 @@
 # NFD OG Image Generator
 
+[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
+
 This service generates dynamic Open Graph images for NFDomains. It provides an API endpoint that returns customized OG images for NFD profiles to be displayed when NFD profile links are shared on social media platforms.
 
 ## Features

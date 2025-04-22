@@ -1,0 +1,32 @@
+name: Validate Renovate Config
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'renovate.json'
+  pull_request:
+    paths:
+      - 'renovate.json'
+
+jobs:
+  validate:
+    name: Validate Renovate configuration
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Validate
+        run: pnpm dlx renovate-config-validator renovate.json

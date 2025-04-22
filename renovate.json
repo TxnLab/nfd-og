@@ -1,0 +1,70 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":pinAllExceptPeerDependencies",
+    ":semanticCommitTypeAll(chore)",
+    "schedule:monthly"
+  ],
+  "dependencyDashboard": true,
+  "configMigration": true,
+  "timezone": "America/New_York",
+  "assignees": ["drichar"],
+  "baseBranches": ["main"],
+  "ignorePaths": ["**/node_modules/**"],
+  "minimumReleaseAge": "3 days",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": "before 4am on Tuesday"
+  },
+  "packageRules": [
+    {
+      "groupName": "non-major dependencies",
+      "matchPackageNames": ["!typescript"],
+      "matchUpdateTypes": ["patch", "minor"],
+      "matchDepTypes": ["dependencies", "devDependencies", "action"]
+    },
+    {
+      "groupName": "TxnLab dependencies",
+      "matchPackagePatterns": ["^@txnlab/"],
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "groupName": "Next.js related",
+      "matchPackagePatterns": ["^next", "^@next", "^@vercel"],
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "groupName": "React",
+      "matchPackageNames": [
+        "react",
+        "react-dom",
+        "@types/react",
+        "@types/react-dom"
+      ],
+      "matchUpdateTypes": ["patch", "minor"]
+    },
+    {
+      "groupName": "ESLint packages",
+      "matchPackagePatterns": ["^eslint", "^@eslint", "^@typescript-eslint"],
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "groupName": "TypeScript",
+      "matchPackageNames": ["typescript", "@types/node"],
+      "matchUpdateTypes": ["patch"]
+    },
+    {
+      "matchPackageNames": ["turbo"],
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "matchCategories": ["node"],
+      "enabled": false
+    },
+    {
+      "matchDepTypes": ["engines"],
+      "enabled": false
+    }
+  ]
+}
