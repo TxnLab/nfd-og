@@ -26,13 +26,13 @@
     },
     {
       "groupName": "TxnLab dependencies",
-      "matchPackagePatterns": ["^@txnlab/"],
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": ["/^@txnlab//"]
     },
     {
       "groupName": "Next.js related",
-      "matchPackagePatterns": ["^next", "^@next", "^@vercel"],
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": ["/^next/", "/^@next/", "/^@vercel/"]
     },
     {
       "groupName": "React",
@@ -46,8 +46,8 @@
     },
     {
       "groupName": "ESLint packages",
-      "matchPackagePatterns": ["^eslint", "^@eslint", "^@typescript-eslint"],
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": ["/^eslint/", "/^@eslint/", "/^@typescript-eslint/"]
     },
     {
       "groupName": "TypeScript",
